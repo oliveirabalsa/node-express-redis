@@ -18,6 +18,11 @@ services:
   #     DB_USER: ${DATABASE_USER}
   #     DB_PASS: ${DATABASE_PASSWORD}
   #     DB_NAME: ${DATABASE_NAME}
+  redis:
+    image: redis
+    container_name: cache
+    expose:
+      - 6379
   db:
     image: postgres:12-alpine
     container_name: node-db

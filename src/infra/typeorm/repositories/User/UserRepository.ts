@@ -9,6 +9,12 @@ class UserRepository implements IUserRepository {
   constructor() {
     this.ormRepository = getRepository(User);
   }
+  async findById(id: string): Promise<User> {
+    return await this.ormRepository.findOneOrFail({ id });
+  }
+  async generateInstance(user: UserModel): Promise<User> {
+    return await this.ormRepository.create(user);
+  }
   async find(): Promise<User[]> {
     return await this.ormRepository.find();
   }
